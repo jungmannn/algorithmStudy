@@ -10,18 +10,44 @@
 
 tNum = int(input())
 abList = list()
-
+resultList = list()
+sum = 0
 for i in range(0, tNum):
     abList.append(input().split())
 
 print(abList)
 
-for 
-
 def gcdFunction(a, b):
     if b == 0:
-        return a
+        if a == 1:
+            return 0
+        else:
+            return a
     else:
         return gcdFunction(b, a%b)
+
+for i in range(0, tNum):
+    for j in range(0, len(abList[i])):
+        for k in range(1, len(abList[i]) - j):
+            sum += gcdFunction(int(abList[i][j]), int(abList[i][j + k]))
+    resultList.append(sum)
+    sum = 0
+for i in resultList:
+    print(i)
+
+# for i in range(0, tNum):
+#     for j in range(0, len(abList[i])):
+#         for k in range(1, len(abList[i]) + 1):
+#             print(gcdFunction(abList[i][j], abList[i][j + k]))
+
+# 0,1 + 0,2 + 0,3 + 0,4 + 1,2 + 1,3 + 1,4 + 2,3 + 2,4 + 3,4
+
+# 0, 1, 2, 3, 4
+
+
+# n , n + 1 // n, n + 2 // n, n + 3 // n, n + 4 => n ++, k--
+# n, n + 1 // n, n + 2 // n, n + 3 => n++, k--
+# n, n + 1 // n, n + 2 // n, n => n++, k--
+# n, n + 1 // n, n + 2 // => end
 
 ## 시도횟수 : 1
