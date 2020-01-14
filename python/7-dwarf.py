@@ -12,4 +12,30 @@
 # 출력
 # 일곱 난쟁이의 키를 오름차순으로 출력한다. 일곱 난쟁이를 찾을 수 없는 경우는 없다.
 
+heightMax = 100
+heightList = list()
+
+sum = 0
+
+for i in range(0, 9):
+    num = int(input())
+    heightList.append(num)
+
+for i in range(0, len(heightList)):
+    sum = sum + heightList[i]
+
+for i in range(0, len(heightList)):
+    for j in range(1, len(heightList) - i):
+        if sum == 100 + (heightList[i] + heightList[i + j]):
+            del heightList[i]
+            del heightList[i + j - 1]
+            heightList.sort()
+            break
+
+for i in range(0, len(heightList)):
+    print(heightList[i])
+
+
+# 1 2 3 4 5 6 7 8 9
+
 ## 시도횟수 : 1
