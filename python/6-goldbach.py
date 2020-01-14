@@ -23,8 +23,11 @@
 # 1. 에라토스테네스의 체 알고리즘을 사용해서 입력받은 수 보다 작은 소수를 모두 찾는다.
 # 2. 소수의 리스트 n개부터 k까지의 합의 조합을 찾는데 k -> n순으로 진행해서 입력 받은 수와 동일한 합의 조합이 나오면 반복을 멈춘다.
 # 3. b가 큰 순으로 더했기 때문에 맨 처음 나오는 조합이 해당 문제의 답이다.
+import math
 
 tList = list()
+subList = list()
+primeList = list()
 while True:
     num = int(input())
     if num == 0:
@@ -32,5 +35,30 @@ while True:
     tList.append(num)
 
 print(tList)
+
+for i in range(0, len(tList)):
+    for k in range(1, tList[i] + 1):
+        if (k == 2) or (k == 3) or (k == 5) or ((k != 1) and ( k % 2 != 0 ) and ( k % 3 != 0 ) and ( k % 5 != 0 )):
+            subList.append(k)
+    subList.reverse()
+    primeList.append(subList)
+    subList = []
+    print(primeList)
+
+for i in range(0, len(primeList)):
+    # print(primeList[i])
+    for j in range(0, len(primeList[i])):
+        # print(primeList[i][j])
+        for k in range(1, len(primeList[i]) - j):
+            if (primeList[i][j] + primeList[i][j + k]) == tList[i]:
+                print('찾았습니다.')
+                print('a는')
+                print(primeList[i][j])
+                print('b는')
+                print(primeList[i][j + k])
+                print('합은')
+                print(tList[i])
+                print(tList[i] , " = " , primeList[i][j + k] , " + " , primeList[i][j] )
+            break
 
 ## 시도횟수 : 1
