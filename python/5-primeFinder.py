@@ -13,6 +13,8 @@ nList = list(map(int, input().split()))
 if len(nList) > nNum:
     print('개수 초과')
 
+print(nList[0])
+
 for i in range(0, nNum):
     if (nList[i] == 2) or (nList[i] == 3) or ((nList[i] != 1) and ( nList[i] % 2 != 0 ) and ( nList[i] % 3 != 0 )):
         count += 1
